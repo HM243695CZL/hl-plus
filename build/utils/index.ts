@@ -18,3 +18,10 @@ export const run = async (command: string) => {
         app.on("close", resolve);
     });
 };
+
+export const pathRewriter = (format)=>{
+    return (id:string) => {
+        id = id.replace(/@hl-plus/g, `hl-plus/${format}`);
+        return id
+    }
+}
