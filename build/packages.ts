@@ -12,9 +12,9 @@ export const buildPackages = (dirname:string, name:string)=>{
         const output = path.resolve(dirname, config.output.name);
         return series(
             // @ts-ignore
-            withTaskName(`buld:${dirname}`, () => {
+            withTaskName(`build:${dirname}`, () => {
                 const tsConfig = path.resolve(projectRoot, 'tsconfig.json'); // ts的配置文件的路径
-                const inputs = ['**/*.ts', "!gulpfile.ts", '!node_modules'];
+                const inputs = ['**/*.ts', '!gulpfile.ts', '!node_modules'];
                 return src(inputs).pipe(ts.createProject(tsConfig,{
                     declaration:true, // 需要生成声明文件
                     strict:false,

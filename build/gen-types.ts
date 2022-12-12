@@ -1,13 +1,13 @@
-import { outDir, projectRoot, hlRoot } from "./utils/paths";
+import { outDir, projectRoot, hlRoot } from './utils/paths';
 import glob from 'fast-glob';
 import {Project,ModuleKind,ScriptTarget,SourceFile} from 'ts-morph'
 import path from 'path'
 import fs from 'fs/promises'
-import { parallel, series } from "gulp";
-import { run, withTaskName } from "./utils";
-import { buildConfig } from "./utils/config";
+import { parallel, series } from 'gulp';
+import { run, withTaskName } from './utils';
+import { buildConfig } from './utils/config';
 export const genEntryTypes = async () => {
-    const files = await glob("*.ts", {
+    const files = await glob('*.ts', {
         cwd: hlRoot,
         absolute: true,
         onlyFiles: true,
@@ -19,13 +19,13 @@ export const genEntryTypes = async () => {
             allowJs: true,
             emitDeclarationOnly: true,
             noEmitOnError: false,
-            outDir: path.resolve(outDir, "entry/types"),
+            outDir: path.resolve(outDir, 'entry/types'),
             target: ScriptTarget.ESNext,
             rootDir: hlRoot,
             strict: false,
         },
         skipFileDependencyResolution: true,
-        tsConfigFilePath: path.resolve(projectRoot, "tsconfig.json"),
+        tsConfigFilePath: path.resolve(projectRoot, 'tsconfig.json'),
         skipAddingFilesFromTsConfig: true,
     });
     const sourceFiles: SourceFile[] = [];
@@ -43,15 +43,15 @@ export const genEntryTypes = async () => {
             await fs.mkdir(path.dirname(filepath), { recursive: true });
             await fs.writeFile(
                 filepath,
-                outputFile.getText().replace(/@xbb-plus/g, "."),
-                "utf8"
+                outputFile.getText().replace(/@xbb-plus/g, '.'),
+                'utf8'
             );
         }
     });
     await Promise.all(tasks);
 };
 export const copyEntryTypes = () => {
-    const src = path.resolve(outDir, "entry/types");
+    const src = path.resolve(outDir, 'entry/types');
     const copy = (module) =>
         parallel(
             // @ts-ignore
@@ -64,7 +64,7 @@ export const copyEntryTypes = () => {
                 )
             )
         );
-    return parallel(copy("esm"), copy("cjs"));
+    return parallel(copy('esm'), copy('cjs'));
 }
 
 export const genTypes = series(genEntryTypes,copyEntryTypes())

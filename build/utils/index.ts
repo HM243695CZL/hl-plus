@@ -7,15 +7,15 @@ export const withTaskName = <T>(name: string, fn: T) => Object.assign(fn, {
 export const run = async (command: string) => {
     // rf -rf
     return new Promise((resolve) => {
-        const [cmd, ...args] = command.split(" ");
+        const [cmd, ...args] = command.split(' ');
 
         // execa这些库
         const app = spawn(cmd, args, {
             cwd: projectRoot,
-            stdio: "inherit", // 直接将这个子进程的输出
+            stdio: 'inherit', // 直接将这个子进程的输出
             shell: true, // 默认情况下 linux 才支持 rm -rf （我再电脑里安装了git bash）
         });
-        app.on("close", resolve);
+        app.on('close', resolve);
     });
 };
 

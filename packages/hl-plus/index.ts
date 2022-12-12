@@ -1,5 +1,5 @@
-import { HlIcon } from "@hl-plus/components";
-import type { App } from "vue"; // ts中的优化只获取类型
+import { HlIcon } from '@hl-plus/components';
+import type { App } from 'vue'; // ts中的优化只获取类型
 
 const components = [HlIcon];
 const install = (app: App) => {
@@ -11,6 +11,6 @@ const install = (app: App) => {
 export default {
     install,
 };
-export * from "@hl-plus/components";
+export * from '@hl-plus/components';
 
 //app.use(XbbPlus)

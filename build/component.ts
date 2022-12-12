@@ -1,30 +1,30 @@
-import { series,parallel } from "gulp";
-import { sync } from "fast-glob";
-import { compRoot, outDir, projectRoot } from "./utils/paths";
-import path from "path";
-import { nodeResolve } from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
-import vue from "rollup-plugin-vue";
-import typescript from "rollup-plugin-typescript2";
-import { rollup, OutputOptions } from "rollup";
-import { buildConfig } from "./utils/config";
-import { pathRewriter, run } from "./utils";
-import { Project, SourceFile } from "ts-morph";
-import glob from "fast-glob";
-import fs from "fs/promises";
-import * as VueCompiler from "@vue/compiler-sfc";
+import { series,parallel } from 'gulp';
+import { sync } from 'fast-glob';
+import { compRoot, outDir, projectRoot } from './utils/paths';
+import path from 'path';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import vue from 'rollup-plugin-vue';
+import typescript from 'rollup-plugin-typescript2';
+import { rollup, OutputOptions } from 'rollup';
+import { buildConfig } from './utils/config';
+import { pathRewriter, run } from './utils';
+import { Project, SourceFile } from 'ts-morph';
+import glob from 'fast-glob';
+import fs from 'fs/promises';
+import * as VueCompiler from '@vue/compiler-sfc';
 
 
 
 const buildEachComponent = async () => {
     // 打包每个组件
-    const files = sync("*", {
+    const files = sync('*', {
         cwd: compRoot,
         onlyDirectories: true,
     });
     // 分别把components 文件夹下的组件 放到dist/es/components下 和 dist/lib/compmonents
     const builds = files.map(async (file: string) => {
-        const input = path.resolve(compRoot, file, "index.ts"); // 每个组件的入口
+        const input = path.resolve(compRoot, file, 'index.ts'); // 每个组件的入口
         const config = {
             input,
             plugins: [nodeResolve(), vue(), typescript(), commonjs()],
@@ -52,19 +52,19 @@ async function genTypes() {
             declaration: true,
             emitDeclarationOnly: true,
             noEmitOnError: true,
-            outDir: path.resolve(outDir, "types"),
+            outDir: path.resolve(outDir, 'types'),
             baseUrl: projectRoot,
             paths: {
-                "@hl-plus/*": ["packages/*"],
+                '@hl-plus/*': ['packages/*'],
             },
             skipLibCheck: true,
             strict: false,
         },
-        tsConfigFilePath: path.resolve(projectRoot, "tsconfig.json"),
+        tsConfigFilePath: path.resolve(projectRoot, 'tsconfig.json'),
         skipAddingFilesFromTsConfig: true,
     });
 
-    const filePaths = await glob("**/*", {
+    const filePaths = await glob('**/*', {
         // ** 任意目录  * 任意文件
         cwd: compRoot,
         onlyFiles: true,
@@ -75,13 +75,13 @@ async function genTypes() {
 
     await Promise.all(
         filePaths.map(async function (file) {
-            if (file.endsWith(".vue")) {
-                const content = await fs.readFile(file, "utf8");
+            if (file.endsWith('.vue')) {
+                const content = await fs.readFile(file, 'utf8');
                 const sfc = VueCompiler.parse(content);
                 const { script } = sfc.descriptor;
                 if (script) {
                     let content = script.content; // 拿到脚本  icon.vue.ts  => icon.vue.d.ts
-                    const sourceFile = project.createSourceFile(file + ".ts", content);
+                    const sourceFile = project.createSourceFile(file + '.ts', content);
                     sourceFiles.push(sourceFile);
                 }
             } else {
@@ -103,7 +103,7 @@ async function genTypes() {
                 recursive: true,
             });
             // @hl-plus -> hl-plus/es -> .d.ts 肯定不用去lib下查找
-            await fs.writeFile(filepath, pathRewriter("es")(outputFile.getText()));
+            await fs.writeFile(filepath, pathRewriter('es')(outputFile.getText()));
         });
         await Promise.all(tasks);
     });
@@ -122,7 +122,7 @@ function copyTypes() {
 // 打包入口文件
 async function buildComponentEntry() {
     const config = {
-        input: path.resolve(compRoot, "index.ts"),
+        input: path.resolve(compRoot, 'index.ts'),
         plugins: [typescript()],
         external: () => true,
     };
@@ -131,7 +131,7 @@ async function buildComponentEntry() {
         Object.values(buildConfig)
             .map((config) => ({
                 format: config.format,
-                file: path.resolve(config.output.path, "components/index.js"),
+                file: path.resolve(config.output.path, 'components/index.js'),
             }))
             .map((config) => bundle.write(config as OutputOptions))
     );

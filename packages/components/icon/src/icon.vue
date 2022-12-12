@@ -1,10 +1,10 @@
 <template>
-  <i class="hl-icon" :style="style">
+  <i class='hl-icon' :style='style'>
     <slot></slot>
   </i>
 </template>
-<script lang="ts">
-import {computed, defineComponent} from "vue";
+<script lang='ts'>
+import {computed, defineComponent} from 'vue';
 import {iconProps} from './icon'
 
 export default defineComponent({

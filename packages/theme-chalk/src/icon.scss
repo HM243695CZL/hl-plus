@@ -1,13 +1,13 @@
-@use "./mixins/mixin.scss" as *;
+@use './mixins/mixin.scss' as *;
 @font-face {
-  font-family: "hl-ui-icons"; /* Project id 2182645 */
+  font-family: 'hl-ui-icons'; /* Project id 2182645 */
   src: url('./fonts/iconfont.woff2') format('woff2'),
   url('./fonts/iconfont.woff') format('woff'),
   url('./fonts/iconfont.ttf') format('truetype');
 }
 
 [class^='#{$namespace}-icon'],[class*='#{$namespace}-icon'] {
-  font-family: "hl-ui-icons" !important;
+  font-family: 'hl-ui-icons' !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -15,194 +15,194 @@
 }
 
 .#{$namespace}-icon-radar:before {
-  content: "\e6eb";
+  content: '\e6eb';
 }
 
 .#{$namespace}-icon-sunburst:before {
-  content: "\e609";
+  content: '\e609';
 }
 
 .#{$namespace}-icon-gauge:before {
-  content: "\e60b";
+  content: '\e60b';
 }
 
 .#{$namespace}-icon-graph:before {
-  content: "\e715";
+  content: '\e715';
 }
 
 .#{$namespace}-icon-scatter:before {
-  content: "\e6b3";
+  content: '\e6b3';
 }
 
 .#{$namespace}-icon-caret-down:before {
-  content: "\e605";
+  content: '\e605';
 }
 
 .#{$namespace}-icon-caret:before {
-  content: "\e606";
+  content: '\e606';
 }
 
 .#{$namespace}-icon-star-o:before {
-  content: "\e73d";
+  content: '\e73d';
 }
 
 .#{$namespace}-icon-phone:before {
-  content: "\e661";
+  content: '\e661';
 }
 
 .#{$namespace}-icon-plus:before {
-  content: "\e68d";
+  content: '\e68d';
 }
 
 .#{$namespace}-icon-star:before {
-  content: "\e62b";
+  content: '\e62b';
 }
 
 .#{$namespace}-icon-download:before {
-  content: "\e699";
+  content: '\e699';
 }
 
 .#{$namespace}-icon-order:before {
-  content: "\e600";
+  content: '\e600';
 }
 
 .#{$namespace}-icon-download-o:before {
-  content: "\e615";
+  content: '\e615';
 }
 
 .#{$namespace}-icon-error:before {
-  content: "\e6ce";
+  content: '\e6ce';
 }
 
 .#{$namespace}-icon-upload:before {
-  content: "\e64a";
+  content: '\e64a';
 }
 
 .#{$namespace}-icon-success:before {
-  content: "\e651";
+  content: '\e651';
 }
 
 .#{$namespace}-icon-warning:before {
-  content: "\e613";
+  content: '\e613';
 }
 
 .#{$namespace}-icon-upload-o:before {
-  content: "\e644";
+  content: '\e644';
 }
 
 .#{$namespace}-icon-question:before {
-  content: "\e601";
+  content: '\e601';
 }
 
 .#{$namespace}-icon-platform:before {
-  content: "\e69d";
+  content: '\e69d';
 }
 
 .#{$namespace}-icon-remove-o:before {
-  content: "\e637";
+  content: '\e637';
 }
 
 .#{$namespace}-icon-plus-o:before {
-  content: "\e629";
+  content: '\e629';
 }
 
 .#{$namespace}-icon-picture:before {
-  content: "\e60a";
+  content: '\e60a';
 }
 
 .#{$namespace}-icon-success-o:before {
-  content: "\e635";
+  content: '\e635';
 }
 
 .#{$namespace}-icon-setting:before {
-  content: "\e602";
+  content: '\e602';
 }
 
 .#{$namespace}-icon-tell:before {
-  content: "\e64c";
+  content: '\e64c';
 }
 
 .#{$namespace}-icon-remove:before {
-  content: "\e603";
+  content: '\e603';
 }
 
 .#{$namespace}-icon-camera:before {
-  content: "\e951";
+  content: '\e951';
 }
 
 .#{$namespace}-icon-answer:before {
-  content: "\e952";
+  content: '\e952';
 }
 
 .#{$namespace}-icon-close-o:before {
-  content: "\e6b0";
+  content: '\e6b0';
 }
 
 .#{$namespace}-icon-close:before {
-  content: "\e604";
+  content: '\e604';
 }
 
 .#{$namespace}-icon-bell:before {
-  content: "\e66a";
+  content: '\e66a';
 }
 
 .#{$namespace}-icon-add:before {
-  content: "\e62a";
+  content: '\e62a';
 }
 
 .#{$namespace}-icon-search:before {
-  content: "\e607";
+  content: '\e607';
 }
 
 .#{$namespace}-icon-more:before {
-  content: "\e625";
+  content: '\e625';
 }
 
 .#{$namespace}-icon-del:before {
-  content: "\e638";
+  content: '\e638';
 }
 
 .#{$namespace}-icon-user:before {
-  content: "\e608";
+  content: '\e608';
 }
 
 .#{$namespace}-icon-share:before {
-  content: "\e63b";
+  content: '\e63b';
 }
 
 .#{$namespace}-icon-table:before {
-  content: "\e666";
+  content: '\e666';
 }
 
 .#{$namespace}-icon-string:before {
-  content: "\e809";
+  content: '\e809';
 }
 
 .#{$namespace}-icon-piechart:before {
-  content: "\e78e";
+  content: '\e78e';
 }
 
 .#{$namespace}-icon-text:before {
-  content: "\e63e";
+  content: '\e63e';
 }
 
 .#{$namespace}-icon-pub:before {
-  content: "\e61d";
+  content: '\e61d';
 }
 
 .#{$namespace}-icon-private:before {
-  content: "\e71f";
+  content: '\e71f';
 }
 
 .#{$namespace}-icon-number:before {
-  content: "\e639";
+  content: '\e639';
 }
 
 .#{$namespace}-icon-linechart:before {
-  content: "\e6e8";
+  content: '\e6e8';
 }
 
 .#{$namespace}-icon-barchart:before {
-  content: "\e658";
+  content: '\e658';
 }
 
