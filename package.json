@@ -1,0 +1,23 @@
+{
+  "name": "hl-plus",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.56.2",
+    "typescript": "^4.9.4",
+    "vue": "^3.2.36"
+  },
+  "dependencies": {
+    "@hl-plus/components": "workspace:^1.0.0",
+    "@hl-plus/theme-chalk": "workspace:^1.0.0",
+    "@hl-plus/utils": "workspace:^1.0.0"
+  }
+}
